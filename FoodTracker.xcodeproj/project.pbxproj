@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F4B7DC525FABDC100DFE302 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4B7DC425FABDC100DFE302 /* RatingControl.swift */; };
 		6FCC534625EBE4850077303C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCC534525EBE4850077303C /* AppDelegate.swift */; };
 		6FCC534825EBE4850077303C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCC534725EBE4850077303C /* SceneDelegate.swift */; };
 		6FCC534A25EBE4850077303C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCC534925EBE4850077303C /* ViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6F4B7DC425FABDC100DFE302 /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		6FCC534225EBE4850077303C /* FoodTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FCC534525EBE4850077303C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6FCC534725EBE4850077303C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				6FCC534525EBE4850077303C /* AppDelegate.swift */,
 				6FCC534725EBE4850077303C /* SceneDelegate.swift */,
 				6FCC534925EBE4850077303C /* ViewController.swift */,
+				6F4B7DC425FABDC100DFE302 /* RatingControl.swift */,
 				6FCC534B25EBE4850077303C /* Main.storyboard */,
 				6FCC534E25EBE4880077303C /* Assets.xcassets */,
 				6FCC535025EBE4880077303C /* LaunchScreen.storyboard */,
@@ -258,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F4B7DC525FABDC100DFE302 /* RatingControl.swift in Sources */,
 				6FCC534A25EBE4850077303C /* ViewController.swift in Sources */,
 				6FCC534625EBE4850077303C /* AppDelegate.swift in Sources */,
 				6FCC534825EBE4850077303C /* SceneDelegate.swift in Sources */,
