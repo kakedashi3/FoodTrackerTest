@@ -12,7 +12,12 @@ import UIKit
     //MARK: properties
     
     private var ratingButtons = [UIButton]()
-    var rating = 0
+    
+    var rating = 0 {
+        didSet {
+            updateButtonSelectionStates()
+        }
+    }
 
     
     @IBInspectable var starSize: CGSize = CGSize(width: 44.0, height: 44.0) {
@@ -53,13 +58,29 @@ import UIKit
     //MARK: Button Action
     
     @objc func ratingButtonTapped(button: UIButton) {
-        print("Button pressed 👍")
+        guard let index = ratingButtons.firstIndex(of: button) else {
+            fatalError("The button, \(button), is not the ratingButtons array: \(ratingButtons)")
+        }
+        
+        // calculate the rating of the selected button
+        let selectedRating = index + 1
+        
+        if selectedRating == rating {
+            // if the selected star represents the current rating, reset the rating to 0.
+            rating = 0
+        } else {
+            // Otherwise set the rating to the selected star
+            rating = selectedRating
+        }
     }
+    
+    
+    
+    
     
     
     //MARK: Private Methods
     private func setupButtons() {
-        
     
         // clear any existing buttons
         for button in ratingButtons {
@@ -69,28 +90,29 @@ import UIKit
         ratingButtons.removeAll()
         
         // Load Button Images
-        let bundle = Bundle(for: type(of; self))
-        let filledstar = UIImage(name: "filledStar", in: bundle, compatibleWith: self.traitCollection )
+        let bundle = Bundle(for: type(of: self))
+        let filledstar = UIImage(named: "filledStar", in: bundle, compatibleWith: self.traitCollection )
+        let emptyStar = UIImage(named: "emptyStar", in: bundle, compatibleWith: self.traitCollection)
+        let highlightedStar = UIImage(named: "highlightStar", in: bundle,compatibleWith: self.traitCollection)
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        for _ in 0..<starCount {
+        for index in 0..<starCount {
         
             // Create the button
             let button = UIButton()
-            button.backgroundColor = UIColor.red
+            
+            // Set the button images
+            button.setImage(emptyStar, for: .normal)
+            button.setImage(filledstar, for: .selected)
+            button.setImage(highlightedStar, for: .highlighted)
+            button.setImage(highlightedStar, for: [.highlighted, .selected])
             
             // Add constaraints
             button.translatesAutoresizingMaskIntoConstraints = false
             button.heightAnchor.constraint(equalToConstant: starSize.height).isActive = true
             button.widthAnchor.constraint(equalToConstant: starSize.width).isActive = true
+            
+            // Set the accessibility label
+            button.accessibilityLabel = "Set \(index + 1) star rating"
             
             // Setup the button action
             button.addTarget(self, action: #selector(RatingControl.ratingButtonTapped(button:)), for: .touchUpInside)
@@ -103,7 +125,44 @@ import UIKit
         
         }
         
+        updateButtonSelectionStates()
     }
     
+    // ボタンの選択状態を更新するために使用するヘルパーメソッド
+    private func updateButtonSelectionStates() {
+        for (index, button) in ratingButtons.enumerated() {
+            // If the index of a button is less than the rating, that button should be selected.
+            button.isSelected = index < rating
+            
+            //Set accessibility hint and value
+            let hintString: String?
+            if rating == index + 1 {
+                hintString = "Tap to reset the rating to zero."
+            } else {
+                hintString = nil
+            }
+            
+            // Calculate the value string
+            let valueString: String
+            switch (rating) {
+            case 0:
+                valueString = "No rating set."
+            case 1:
+                valueString = "1 star set."
+            default:
+                valueString = "\(rating) stars set"
+            }
+            
+            // Assign the hint string and value string
+            button.accessibilityHint = hintString
+            button.accessibilityValue = valueString
+            
+            
+            
+            
+            
+        }
+        
+    }
     
 }
