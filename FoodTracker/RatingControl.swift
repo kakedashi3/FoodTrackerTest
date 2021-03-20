@@ -32,15 +32,7 @@ import UIKit
         didSet {
             setupButtons()
         }
-        
     }
-    
-    
-    
-    
-    
-    
-    
     
     
     //MARK: Initialization　イニシャライザ上書き
@@ -127,6 +119,7 @@ import UIKit
         
         updateButtonSelectionStates()
     }
+    
     
     // ボタンの選択状態を更新するために使用するヘルパーメソッド
     private func updateButtonSelectionStates() {

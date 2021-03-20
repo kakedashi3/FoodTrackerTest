@@ -5,9 +5,9 @@
 //  Created by 立岡力 on 2021/03/18.
 //
 
-import UIkit
+import UIKit
 
-class Mial {
+class Meal {
     
     //MARK: Properties
     
